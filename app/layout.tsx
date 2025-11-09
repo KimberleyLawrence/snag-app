@@ -1,22 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import './globals.css'
-
+import "./globals.css";
 
 // fontawesome
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-config.autoAddCss = false
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
-
-const APP_NAME = "Bat's Victoria";
-const APP_DESCRIPTION = "Bat's Victoria";
+const APP_NAME = "Snag App";
+const APP_DESCRIPTION = "Snag App";
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
   title: {
     default: APP_NAME,
-    template: "%s - Bat's Victoria",
+    template: "%s - Snag App",
   },
   description: APP_DESCRIPTION,
   manifest: "/manifest.json",
@@ -42,15 +40,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" dir="ltr">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className="bg-gray-600 text-gray-900 ">
+      <body className="bg-teal-500 text-gray-900 ">
         <div className="grid grid-cols-6">
           <div className="col-span-6 md:col-span-4 md:col-start-2">
             {children}
           </div>
         </div>
-   
       </body>
-    </html >
+    </html>
   );
 }
