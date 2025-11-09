@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Pagetitle from "./components/pagetitle";
-import { faBriefcaseMedical, faCircleInfo, faEye, faFlag, faLocationDot, faPhone, faCalendarDays, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcaseMedical, faCircleInfo, faEye, faFlag, faLocationDot, faPhone, faCalendarDays, IconDefinition, faTruckMedical } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const metadata: Metadata = {
   title: "Bats Victoria",
   description: "Information for observation and rescuing within the Yarra Bend Flying Fox colony."
 };
+
+
 
 
 const NavLink = ({title, description, url, icon }: { title: string, description: string, url: string, icon: IconDefinition }) => {
@@ -25,6 +27,9 @@ const NavLink = ({title, description, url, icon }: { title: string, description:
     </>
   )
 }
+const ImageRecuedBat = '/images/sausage_logo_art.png';
+
+
 
 
 
@@ -32,21 +37,82 @@ export default function Page() {
   return (
     <>
 
-      <Pagetitle>Bat Monitoring</Pagetitle>
+      <Pagetitle></Pagetitle>
 
-      <div className="w-full p-2 rounded-lg  sm:p-6  ">
-        <p className="text-md text-gray-900 font-semibold ">Information for observation and rescuing within the Yarra Bend Flying Fox colony.</p>
-        <ul className="my-4 space-y-3">
-          <NavLink title="Preparations" description="Safety, Equipment, Guidelines" url="/preparations" icon={faCircleInfo} />
-          <NavLink title="Locations" description="Location Terminology" url="/locations" icon={faLocationDot} />
-          <NavLink title="What to Look for" description="Sights and Sounds" url="/look" icon={faEye} />
-          <NavLink title="Rescue and Wrap" description="Vaxxed rescuers only" url="/rescue" icon={faBriefcaseMedical} />
-          <NavLink title="Calendar" description="Important dates and bat behaviour" url="/calender" icon={faCalendarDays} />
-          <NavLink title="Report Non-Urgent Bats" description="How to report inc. Deceased" url="/report" icon={faFlag} />
-          <NavLink title="Important Contacts" description="For any questions or concerns" url="/contact" icon={faPhone} />
-        </ul>
+      <div className="w-full p-4    sm:p-6   bg-red-100">
+      <div className="grid  gap-8 ">
+            <div className="relative sm:rounded-lg"></div>
+            
+              <img
+                 src={ImageRecuedBat} 
+                 alt="" className="flex-shrink-0  max-w-sm mx-auto " />
 
-      </div >
+            
+        </div>
+        
+<table className="text-center">
+<tr className="border-pink-700">
+          <button type="button" className=" p-2  text-lg font-bold text-gray-900 rounded-s-lg"> VIC </button>
+          <button type="button" className="p-2  text-lg font-bold text-gray-900 rounded-s-lg"> NSW </button>
+          <button type="button" className="p-2  text-lg font-bold text-gray-900 rounded-s-lg"> ACT</button>
+          <button type="button" className="p-2  text-lg font-bold text-gray-900 rounded-s-lg"> QLD </button>
+          <button type="button" className="p-2  text-lg font-bold text-gray-900 rounded-s-lg"> SA </button>
+       </tr>      
+<tr>
+        
+          <button type="button" className="p-2  text-lg font-bold text-gray-900 rounded-s-lg"> WA</button>
+          <button type="button" className="p-2  text-lg font-bold text-gray-900 rounded-s-lg"> TAS </button>
+          <button type="button" className="p-2  text-lg font-bold text-gray-900 rounded-s-lg"> NT </button>
+          <button type="button" className="p-2 text-lg font-bold text-gray-900 rounded-s-lg"> NZ </button>
+
+      </tr>  
+        
+        </table>
+        
+
+        </div>
+     
+      <div className="w-full p-4  sm:p-6   bg-black-100">
+        <h2 className="  text-3xl font-extrabold m-3 text-center">Leaderboard</h2>
+        <div className="grid  gap-8 ">
+          
+            <table className="w-full text-lg  ">
+              <tr className="">
+                  <h2 className="  text-3xl font-extrabold m-3 text-center">1ST</h2>
+                <td className=" ">
+                     <h2 className="  text-3xl font-extrabold m-3 text-center">Leaderboard</h2>
+                </td>
+            </tr>
+              <tr className="">
+                  <h2 className="  text-3xl font-extrabold m-3 text-center">2ND</h2>
+                <td className=" ">
+                     <h2 className="  text-3xl font-extrabold m-3 text-center">Leaderboard</h2>
+                </td>
+              </tr>
+            </table>
+        </div>
+        </div>
+
+        <div className="w-full p-4    sm:p-6   bg-red-100">
+      <div className="grid  gap-8 ">
+           
+<h2 className="  text-2xl font-bold m-3 text-center">Vote Now</h2>
+            
+        </div>
+        </div>
+
+
+
+
+
     </>
   );
+
+
+
+
+
+
+
+  
 }

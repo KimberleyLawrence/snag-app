@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import './globals.css'
-import Footer from "./components/footer";
+
 
 // fontawesome
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             {children}
           </div>
         </div>
-        <Footer />
+   
       </body>
     </html >
   );
