@@ -45,12 +45,15 @@ type Vote struct {
 	Date          string `json:"date"`
 	RatingSnag    int    `json:"rating_snag"`
 	RatingOnion   int    `json:"rating_onion"`
-	RatingSpeed   int    `json:"rating_speed"`
+	RatingBread   int    `json:"rating_bread"`
+	OnionsTop     bool   `json:"onions_top"`
 }
 
 type HighScore struct {
 	GroupName     string  `json:"group_name"`
 	GroupLocation string  `json:"group_location"`
+	OnionsTop     int     `json:"onions_top"`
+	OnionsBottom  int     `json:"onions_bottom"`
 	Rating        float64 `json:"rating"`
 	Votes         int     `json:"votes"`
 }
@@ -107,7 +110,12 @@ func (a *App) apiHighscores(w http.ResponseWriter, r *http.Request) {
 	}
 
 	h := []HighScore{}
-	a.db.Table("votes").Select("group_name", "group_location", "(avg(rating_snag) + avg(rating_onion) + avg(rating_speed))/3 as rating", "count() as votes").Where("group_location = ?", userLocaion).Group("group_name, group_location").Order("rating DESC, votes DESC").Limit(5).Scan(&h)
+	a.db.Table("votes").Select(
+		"group_name",
+		"group_location",
+		"(avg(rating_snag) + avg(rating_onion) + avg(rating_bread))/3 as rating",
+		"count() as votes",
+	).Where("group_location = ?", userLocaion).Group("group_name, group_location").Order("rating DESC, votes DESC").Limit(5).Scan(&h)
 
 	b, err := json.Marshal(h)
 	if err != nil {
@@ -155,7 +163,7 @@ func main() {
 		db: *setupDB(),
 	}
 
-	for i := range 5 {
+	for i := range 500 {
 
 		v := Vote{
 			GroupName:     GroupNames[rand.Intn(len(GroupNames))],
@@ -163,7 +171,8 @@ func main() {
 			User:          fmt.Sprintf("test-%d", i),
 			RatingSnag:    rand.Intn(6),
 			RatingOnion:   rand.Intn(6),
-			RatingSpeed:   rand.Intn(6),
+			RatingBread:   rand.Intn(6),
+			OnionsTop:     bool(rand.Intn(2) == 1),
 		}
 		app.db.Clauses(clause.OnConflict{DoNothing: true}).Create(&v)
 		fmt.Println(v)

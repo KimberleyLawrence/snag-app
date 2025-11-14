@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 import { FetchHighScore, HighScoreRecord } from "./components/highscore";
+import { Header } from "./components/header";
+import { Footer } from "./components/footer";
 
 export const metadata: Metadata = {
   title: "Snag App",
@@ -114,30 +116,19 @@ const ImageHeroLogo = "/images/sausage_logo_art.png";
 
 export default function Page() {
 
-  const hs = LeaderUI({location: "vic"});
+  const locationName = "vic";
+  const highscoreListings = LeaderUI({location: locationName});
 
   return (
     <>
-      <div className="w-full   bg-red-100">
-        <div className="grid">
-          <div className="relative sm:rounded-lg"></div>
-
-          <img
-            src={ImageHeroLogo}
-            alt=""
-            className="flex-shrink-0 max-w-sm mx-auto -mb-10 "
-          />
-
-          <h2 className="  text-xl font-bold text-center  p-3 -mb-3">
+      <Header>
+        <h2 className="  text-xl font-bold text-center  p-3 -mb-3">
             WHO MAKES THE BEST HARDWARE STORE SNAGS?
-          </h2>
-        </div>
-
+        </h2>
         <div className="text-center ">
           <div className="">
             <LocationLink name="VIC" />
             <LocationLink name="NSW/ACT" />
-           
             <LocationLink name="QLD" />
             <LocationLink name="SA" />
             <LocationLink name="WA" />
@@ -146,42 +137,29 @@ export default function Page() {
             <LocationLink name="NZ" />
           </div>
         </div>
-      </div>
+      </Header>
 
-  
-
-      <BlackBoard>
-
-
-
-
-
-        
-        <Leaderboard location="VIC">
-          {hs}
-          {/* 
-            <Leader position={1} name="Cricket Clubs" rating={4.5} votes={104} />
-            <Leader position={2} name="Mens Shed" rating={4.3} votes={56} />
-            <Leader position={3} name="Primary School" rating={3.5} votes={14} />
-            <Leader position={4} name="Footy Clubs" rating={3.2} votes={45} />
-          */}
+      <BlackBoard>        
+        <Leaderboard location={locationName}>
+          {highscoreListings}
         </Leaderboard>
-
         <div className="w-full p-4 sm:p-6">
-        <div className="grid  ">
-            <p className="  text-2xl font-bold text-center"> VIC LIKES THEIR ONIONS</p>
-            <p className="  text-2xl font-bold text-center"> BELOW</p>
+          <div className="grid  ">
+            <p className="  text-2xl font-bold text-center">
+              {locationName} LIKES THEIR ONIONS</p>
+            <p className="  text-2xl font-bold text-center">
+              BELOW
+            </p>
+          </div>
         </div>
-      </div>
       </BlackBoard>
 
-      <div className="w-full p-4 sm:p-6 bg-red-100">
-        <div className="grid  gap-8 ">
+      <Footer>
           <h2 className="  text-3xl font-bold m-3 text-center">
             <Link href="/vote">VOTE NOW</Link>
           </h2>
-        </div>
-      </div>
+      </Footer>
+
     </>
   );
 }
