@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import Pagetitle from "./components/pagetitle";
 import Link from "next/link";
+import { FetchHighScore, HighScoreRecord } from "./components/highscore";
 
 export const metadata: Metadata = {
   title: "Snag App",
@@ -51,6 +51,18 @@ const Leaderboard = ({
   );
 };
 
+
+const LeaderUI = async ({location} :{location:string}) => { 
+  const locationScores = await FetchHighScore(location);
+  return (
+    <>
+      {locationScores.map((group: HighScoreRecord, index: number ) => (
+        <Leader position={index+1} name={group.group_name} rating={group.rating} votes={group.votes} />
+      ))}
+      </>
+  )
+}
+
 const Leader = ({
   name,
   position,
@@ -87,16 +99,23 @@ const Leader = ({
           {positionSuffix} {name}
         </span>
         <span className="text-xl">
-          rating({rating}) votes({votes})
+          rating({rating.toFixed(1)}) votes({votes})
         </span>
       </div>
     </>
   );
 };
 
+
+
 const ImageHeroLogo = "/images/sausage_logo_art.png";
 
+
+
 export default function Page() {
+
+  const hs = LeaderUI({location: "vic"});
+
   return (
     <>
       <div className="w-full p-4    sm:p-6   bg-red-100">
@@ -125,12 +144,17 @@ export default function Page() {
         </div>
       </div>
 
+  
+
       <BlackBoard>
         <Leaderboard location="VIC">
-          <Leader position={1} name="Cricket Clubs" rating={4.5} votes={104} />
-          <Leader position={2} name="Mens Shed" rating={4.3} votes={56} />
-          <Leader position={3} name="Primary School" rating={3.5} votes={14} />
-          <Leader position={4} name="Footy Clubs" rating={3.2} votes={45} />
+          {hs}
+          {/* 
+            <Leader position={1} name="Cricket Clubs" rating={4.5} votes={104} />
+            <Leader position={2} name="Mens Shed" rating={4.3} votes={56} />
+            <Leader position={3} name="Primary School" rating={3.5} votes={14} />
+            <Leader position={4} name="Footy Clubs" rating={3.2} votes={45} />
+          */}
         </Leaderboard>
       </BlackBoard>
 
