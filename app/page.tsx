@@ -110,61 +110,24 @@ export default function Page() {
   return (
     <>
       <Header>
-        <h2 className="  text-xl font-bold text-center pt-4 ">
-     
-        </h2>
-
-        <div className="text-center ">
-          <div className="">
-
-            <button type="button" className="text-body     px-3  " >
-   <LocationLink name="VIC" />
-  </button>
-           <button type="button" className="text-body       px-3  " >
-   <LocationLink name="NSW" />
-  </button>
-  <button type="button" className="text-body      px-3 " >
-   <LocationLink name="ACT" />
-            </button>
-            <button type="button" className="text-body       px-3  " >
-   <LocationLink name="QLD" />
-            </button>
-            <button type="button" className="text-body      px-3  " >
-   <LocationLink name="SA" />
-  </button>
-            
-     
         
-          </div>
-        </div>
-             <div className="text-center">
-          <div className="">
-     <button type="button" className="text-body   px-3  " >
-   <LocationLink name="WA" />
-  </button>
-           <button type="button" className="text-body  px-3  " >
-   <LocationLink name="TAS" />
-  </button>
-  <button type="button" className="text-body  px-3  " >
-   <LocationLink name="NT" />
-            </button>
-    <button type="button" className="text-body  px-3  " >
-   <LocationLink name="NZ" />
-            </button>
-            
-          </div>
-        </div>
+
+         
+
       </Header>
 
       <BlackBoard>        
+          <h2 className="  text-xl font-bold text-center pt-4 ">
+     
+        </h2>
         <Leaderboard location={locationName}>
           {highscoreListings}
         </Leaderboard>
         <div className="w-full p-2 sm:p-6">
           <div className="grid  ">
-            <p className="  text-3xl font-bold text-center">
+            <p className="  text-2xl font-bold text-center">
               {locationName} LIKES THEIR ONIONS:</p>
-            <p className="  text-3xl font-bold text-center">
+            <p className="  text-2xl font-bold text-center">
               BELOW
             </p>
           </div>
@@ -172,9 +135,47 @@ export default function Page() {
       </BlackBoard>
 
       <Footer>
-          <h2 className="  text-3xl font-bold m-3 text-center">
-            <Link href="/vote">VOTE NOW</Link>
+<div className="col">
+        <h2 className="  text-2xl font-bold  text-center mb-2 ">
+          <Link href="/vote">VOTE NOW</Link>
+          
           </h2>
+
+        <div className="text-center  ">
+        <hr className="  border-red-400 border-0.5"></hr>
+
+            <button type="button" className="     px-1  " >
+   <LocationLink name="VIC" />
+  </button>
+           <button type="button" className="       px-1  " >
+   <LocationLink name="NSW" />
+  </button>
+  <button type="button" className="      px-1 " >
+   <LocationLink name="ACT" />
+            </button>
+            <button type="button" className="       px-1  " >
+   <LocationLink name="QLD" />
+            </button>
+            <button type="button" className="      px-1  " >
+   <LocationLink name="SA" />
+  </button>
+     <button type="button" className="   px-1  " >
+   <LocationLink name="WA" />
+  </button>
+           <button type="button" className="  px-1  " >
+   <LocationLink name="TAS" />
+  </button>
+  <button type="button" className="  px-1  " >
+   <LocationLink name="NT" />
+            </button>
+    <button type="button" className="  px-1  " >
+   <LocationLink name="NZ" />
+            </button>
+            
+
+        </div>
+       
+       </div>   
       </Footer>
 
     </>
