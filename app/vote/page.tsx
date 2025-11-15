@@ -47,10 +47,18 @@ const RatingVote = ({ name, display_name }: { name: string, display_name: string
 export default function Page() {
   return (
     <>
-	    <Header />
-        <BlackBoard>
+		  <Header>
+			  <h2 className="  text-3xl font-bold text-center p-3 ">
+           
+        </h2>
+	 </Header>
+		  <BlackBoard>
+			  
+			  <h2 className="   font-bold text-center  p-3 ">
+      VOTE
+        </h2>
 			<form>
-				<div className="grid grid-cols-1 md:grid-cols-2">
+				<div className="grid grid-cols-1 md:grid-cols-2 pt-4">
 
 					<div className="col">
 						<label className="control-label uppercase">location</label>
@@ -81,23 +89,23 @@ export default function Page() {
 					<RatingVote name="sauce" display_name="sauce choices" />
 
 									
-					<div className="col">
-						<label className="control-label uppercase">onion placement</label>
+					<div className="col mb-5">
+						<label className="control-label uppercase ">onion placement</label>
 					</div>
 					<div className="col">
 							
 								
-					<div className="me-4">
+					<div className="mb-5">
 						<input id="onion-top" type="radio" value="" name="inline-radio-group" className="w-7 h-7 border-default-medium rounded-full border border-default "/>
-						<label htmlFor="onion-top" className="select-none ms-2  font-medium text-heading">TOP</label>
-					</div>
-					<div className="me-4">
+						<label htmlFor="onion-top" className=" me-4 select-none ms-2  font-medium text-heading uppercase">Above</label>
+					
+		
 						<input id="inline-2-radio" type="radio" value="" name="inline-radio-group" className="w-7 h-7 border-default-medium rounded-full border border-default "/>
-						<label htmlFor="inline-2-radio" className="select-none ms-2 font-medium text-heading">BOTTOM</label>
+						<label htmlFor="inline-2-radio" className="select-none ms-2 font-medium text-heading uppercase me-4">Below</label>
 					</div>
 				</div>
 
-				<div className="col md:col-span-2">
+				<div className="col md:col-span-2 mb-5">
 
 					<div className="bg-amber-400 rounded p-4 ">
 						<button className="button btn font-black-100" type="submit">Vote</button>

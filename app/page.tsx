@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FetchHighScore, HighScoreRecord } from "./components/highscore";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
+import { BlackBoard } from "./components/blackboard";
 
 export const metadata: Metadata = {
   title: "Snag App",
@@ -23,20 +24,7 @@ const LocationLink = ({ name }: { name: string }) => {
   );
 };
 
-const BlackBoard = ({ children }: { children: any }) => {
-  return (
-    <>
-      <div
-        className="bg-black-100 text-4xl  p-5 text-center uppercase font-stretch-ultra-condensed"
-        style={{
-          fontFamily: "mogra",
-        }}
-      >
-        {children}
-      </div>
-    </>
-  );
-};
+
 
 const Leaderboard = ({
   location,
@@ -122,19 +110,48 @@ export default function Page() {
   return (
     <>
       <Header>
-        <h2 className="  text-xl font-bold text-center  p-3 -mb-3">
-            WHO MAKES THE BEST HARDWARE STORE SNAGS?
+        <h2 className="  text-xl font-bold text-center pt-4 ">
+     
         </h2>
+
         <div className="text-center ">
           <div className="">
-            <LocationLink name="VIC" />
-            <LocationLink name="NSW/ACT" />
-            <LocationLink name="QLD" />
-            <LocationLink name="SA" />
-            <LocationLink name="WA" />
-            <LocationLink name="TAS" />
-            <LocationLink name="NT" />
-            <LocationLink name="NZ" />
+
+            <button type="button" className="text-body     px-3  " >
+   <LocationLink name="VIC" />
+  </button>
+           <button type="button" className="text-body       px-3  " >
+   <LocationLink name="NSW" />
+  </button>
+  <button type="button" className="text-body      px-3 " >
+   <LocationLink name="ACT" />
+            </button>
+            <button type="button" className="text-body       px-3  " >
+   <LocationLink name="QLD" />
+            </button>
+            <button type="button" className="text-body      px-3  " >
+   <LocationLink name="SA" />
+  </button>
+            
+     
+        
+          </div>
+        </div>
+             <div className="text-center">
+          <div className="">
+     <button type="button" className="text-body   px-3  " >
+   <LocationLink name="WA" />
+  </button>
+           <button type="button" className="text-body  px-3  " >
+   <LocationLink name="TAS" />
+  </button>
+  <button type="button" className="text-body  px-3  " >
+   <LocationLink name="NT" />
+            </button>
+    <button type="button" className="text-body  px-3  " >
+   <LocationLink name="NZ" />
+            </button>
+            
           </div>
         </div>
       </Header>
@@ -143,11 +160,11 @@ export default function Page() {
         <Leaderboard location={locationName}>
           {highscoreListings}
         </Leaderboard>
-        <div className="w-full p-4 sm:p-6">
+        <div className="w-full p-2 sm:p-6">
           <div className="grid  ">
-            <p className="  text-2xl font-bold text-center">
-              {locationName} LIKES THEIR ONIONS</p>
-            <p className="  text-2xl font-bold text-center">
+            <p className="  text-3xl font-bold text-center">
+              {locationName} LIKES THEIR ONIONS:</p>
+            <p className="  text-3xl font-bold text-center">
               BELOW
             </p>
           </div>
