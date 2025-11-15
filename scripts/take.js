@@ -6,13 +6,7 @@ import path from "path";
 
 const urls = [
     "/",
-    "/before_you_go",
-    "/contact",
-    "/calender",
-    "/locations",
-    "/look",
-    "/report",
-    "/rescue",
+    "/vote",
 ];
 
 
@@ -58,7 +52,7 @@ async function takeScreenshots(baseUrl) {
         const deviceSlug = name.replace(/\s+/g, "_");
 
         for (const url of urls) {
-            
+
             let cleanName = url.replace(/\//g, "_") || "home";
             if (cleanName == "_") {
                 cleanName = "_home";
