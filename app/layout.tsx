@@ -5,7 +5,6 @@ import "./globals.css";
 // fontawesome
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { Footer } from "./components/footer";
 config.autoAddCss = false;
 
 const APP_NAME = "Snag App";

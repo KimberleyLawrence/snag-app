@@ -7,6 +7,7 @@ import path from "path";
 const urls = [
     "/",
     "/vote",
+    "/thanks",
 ];
 
 

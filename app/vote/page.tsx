@@ -8,8 +8,40 @@ export const metadata: Metadata = {
 import { BlackBoard } from "@/components/blackboard";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { processVote } from "./actions";
 
-const ImageHeroLogo = "/images/sausage_logo_art.png";
+
+interface Operator {
+  id: string;
+  name: string;
+}
+
+const operators: Operator[] = [
+  { id: 'sport_cricket', name: 'Sport Cricket' },
+  { id: 'sport_football', name: 'Netball Club' },
+  { id: 'sport_netball', name: 'Kindergarten' },
+  { id: 'mens_shed', name: 'Cricket Club' },
+  { id: 'primary_school', name: 'Netball Club' },
+];
+
+
+
+interface Location {
+  id: string;
+  name: string;
+}
+
+const locations: Location[] = [
+  { id: 'act', name: 'act' },
+  { id: 'nsw', name: 'nsw' },
+  { id: 'nt', name: 'nt' },
+  { id: 'qld', name: 'qld' },
+  { id: 'sa', name: 'sa' },
+  { id: 'tas', name: 'tas' },
+  { id: 'vic', name: 'vic' },
+  { id: 'wa', name: 'wa' },
+];
+
 
 const RatingVote = ({ name, display_name }: { name: string, display_name: string }) => {
 	const input_name = name + "_rating";
@@ -57,7 +89,7 @@ export default function Page() {
 			  <h2 className="   font-bold text-center  p-3 ">
       VOTE
         </h2>
-			<form>
+			<form action={processVote}>
 				<div className="grid grid-cols-1 md:grid-cols-2 pt-4">
 
 					<div className="col">
@@ -65,23 +97,35 @@ export default function Page() {
 					</div>
 
 					<div className="col">
-						<select id="group_location" className="block w-full px-3 py-2.5  bg-black-100 mb-4 flex items-center">
-							<option value="VIC">VIC</option>
-							<option value="NSW">NSW</option>
-							<option value="SA">SA</option>
+						<select
+						name="group_location"
+						id="group_location"
+						className="block w-full px-3 py-2.5 bg-black-100 mb-4 flex items-center"
+						>
+						{locations.map((location, index) => (
+							<option key={index} value={location.id}>
+							{location.name}
+							</option>
+						))}
 						</select>
 					</div>
 
 					<div className="col">
 						<label className="control-label uppercase">bbq group type</label>
 					</div>
-					<div className="col">
-						<select id="group_name" className="block w-full px-3 py-2.5  bg-black-100 mb-4 items-center">
-							<option value="VIC">CRICKET CLUB</option>
-							<option value="NSW">NETBALL CLUB</option>
-							<option value="SA">KINDERGARTEN</option>
-						</select>
-					</div>
+						<div className="col">
+							<select
+							name="group_name"
+							id="group_name"
+							className="block w-full px-3 py-2.5 bg-black-100 mb-4 items-center"
+							>
+							{operators.map((operator, index) => (
+								<option key={index} value={operator.id} className="uppercase">
+								{operator.name}
+								</option>
+							))}
+							</select>
+						</div>
 		
 					<RatingVote name="snag" display_name="snag" />
 					<RatingVote name="onion" display_name="onion" />
@@ -96,11 +140,10 @@ export default function Page() {
 							
 								
 					<div className="mb-5">
-						<input id="onion-top" type="radio" value="" name="inline-radio-group" className="w-7 h-7 border-default-medium rounded-full border border-default "/>
+						<input name="onion_top" id="onion-top" type="radio" value="true" className="w-7 h-7 border-default-medium rounded-full border border-default "/>
 						<label htmlFor="onion-top" className=" me-4 select-none ms-2  font-medium text-heading uppercase">Above</label>
-					
-		
-						<input id="inline-2-radio" type="radio" value="" name="inline-radio-group" className="w-7 h-7 border-default-medium rounded-full border border-default "/>
+							
+						<input name="onion_top" id="inline-2-radio" type="radio" value="false" className="w-7 h-7 border-default-medium rounded-full border border-default "/>
 						<label htmlFor="inline-2-radio" className="select-none ms-2 font-medium text-heading uppercase me-4">Below</label>
 					</div>
 				</div>
