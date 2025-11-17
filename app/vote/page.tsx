@@ -17,10 +17,10 @@ interface Operator {
 }
 
 const operators: Operator[] = [
-  { id: 'sport_cricket', name: 'Sport Cricket' },
-  { id: 'sport_football', name: 'Netball Club' },
-  { id: 'sport_netball', name: 'Kindergarten' },
-  { id: 'mens_shed', name: 'Cricket Club' },
+  { id: 'sport_cricket', name: 'Cricket Club' },
+  { id: 'sport_football', name: 'Football Club' },
+  { id: 'kindergarten', name: 'Kindergarten' },
+  { id: 'mens_shed', name: 'Mens Shed' },
   { id: 'primary_school', name: 'Netball Club' },
 ];
 
@@ -100,7 +100,7 @@ export default function Page() {
 						<select
 						name="group_location"
 						id="group_location"
-						className="block w-full px-3 py-2.5 bg-black-100 mb-4 flex items-center"
+						className="block w-full px-3 py-2.5 bg-black-100 mb-4 flex items-center uppercase"
 						>
 						{locations.map((location, index) => (
 							<option key={index} value={location.id}>
@@ -117,7 +117,7 @@ export default function Page() {
 							<select
 							name="group_name"
 							id="group_name"
-							className="block w-full px-3 py-2.5 bg-black-100 mb-4 items-center"
+							className="block w-full px-3 py-2.5 bg-black-100 mb-4 items-center uppercase"
 							>
 							{operators.map((operator, index) => (
 								<option key={index} value={operator.id} className="uppercase">
